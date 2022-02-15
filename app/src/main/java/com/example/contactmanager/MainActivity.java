@@ -17,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         DatabaseHandler db = new DatabaseHandler(MainActivity.this);
-        //Contact jason = new Contact();
-        //jason.setName("Jason");
-        //jason.setPhoneNumber("8328556844");
-        //db.addContact(jason);
+        Contact jason = new Contact();
+//        jason.setName("Jason");
+//        jason.setPhoneNumber("8328556844");
+//        db.addContact(jason);
         //Get 1 contact
 //        Contact c = db.getContact(2);
 //        c.setName("NewJason");
@@ -36,5 +36,7 @@ public class MainActivity extends AppCompatActivity {
         for(Contact contact: contactList){
             Log.d("ActivityMain", "onCreate: " + contact.getId() + " " + contact.getName() + " " + contact.getPhoneNumber());
         }
+
+        Log.d("ActivityMain", "onCreate: count: " + db.getCount());
     }
 }
