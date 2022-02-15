@@ -100,4 +100,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return contactList;
     }
+
+    //Update contact
+    public int updateContact(Contact contact){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Util.KEY_NAME, contact.getName());
+        values.put(Util.KEY_PHONE_NUMBER, contact.getPhoneNumber());
+
+        //update the row
+        //update(table name, values, where id = ?,
+        return sqLiteDatabase.update(Util.TABLE_NAME, values, Util.KEY_ID + "=?",
+                new String[]{String.valueOf(contact.getId())});
+    }
+
+    //Delete single contact
+    public void deleteContact(Contact contact){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete(Util.TABLE_NAME, Util.KEY_ID + "=?", new String[]{String.valueOf(contact.getId())});
+    }
 }
